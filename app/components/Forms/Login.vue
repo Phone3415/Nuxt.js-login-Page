@@ -114,7 +114,7 @@ class ResetValidation {
   justify-content: center;
   align-items: center;
 
-  width: 25%;
+  width: max(15rem, 25%);
 
   gap: 1.25rem;
   padding: 2rem;
@@ -271,6 +271,12 @@ input:-webkit-autofill:active {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-form {
+    width: min(35%, 25rem);
   }
 }
 </style>
