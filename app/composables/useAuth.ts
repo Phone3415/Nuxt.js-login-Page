@@ -3,20 +3,8 @@ interface LoginCredentials {
   password: string;
 }
 
-interface HTTPStatus {
+interface LoginAPIResponse {
   code: string;
-  message: string;
-}
-
-interface HTTPResponse {
-  status: HTTPStatus;
-  data: {};
-}
-
-interface LoginResponse extends HTTPResponse {
-  data: {
-    access_token: string;
-  };
 }
 
 export function useAuthComposable() {
@@ -26,13 +14,13 @@ export function useAuthComposable() {
     try {
       isLoading.value = true;
 
-      const response: LoginResponse = await $fetch("/api/login", {
+      const response: LoginAPIResponse = await $fetch("/api/login", {
         method: "POST",
         body: credentials,
         ignoreResponseError: true,
       });
 
-      return response.status.code;
+      return response.code;
     } finally {
       isLoading.value = false;
     }
